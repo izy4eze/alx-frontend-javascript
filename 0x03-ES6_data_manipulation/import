@@ -1,0 +1,41 @@
+
+import Building from './5-building';
+rt default class EVCar extends Car {
+  constructor(brand, motor, color, range) {
+    super(brand, motor, color);
+    this.range = range;
+  }
+
+  get range() {
+    return this._range;
+  }
+
+  set range(value) {
+    this._range = value;
+  }
+
+  cloneCar() {
+    const Species = super.constructor[Symbol.species];
+
+    return new Species();
+  }
+}
+
+export default class SkyHighBuilding extends Building {
+  constructor(sqft, floors) {
+    super(sqft);
+    this.floors = floors;
+  }
+
+  get floors() {
+    return this._floors;
+  }
+
+  set floors(value) {
+    this._floors = value;
+  }
+
+  evacuationWarningMessage() {
+    return `Evacuate slowly the ${this.floors} floors`;
+  }
+}
