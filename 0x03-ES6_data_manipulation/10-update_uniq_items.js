@@ -1,22 +1,13 @@
-iimport Car from './10-car';
-
-export default class EVCar extends Car {
-  constructor(brand, motor, color, range) {
-    super(brand, motor, color);
-    this.range = range;
+export default function updateUniqueItems(groceries) {
+  if (!(groceries instanceof Map)) {
+    throw Error('Cannot process');
   }
 
-  get range() {
-    return this._range;
-  }
+  groceries.forEach((val, key) => {
+    if (val === 1) {
+      groceries.set(key, 100);
+    }
+  });
 
-  set range(value) {
-    this._range = value;
-  }
-
-  cloneCar() {
-    const Species = super.constructor[Symbol.species];
-
-    return new Species();
-  }
+  return groceries;
 }
